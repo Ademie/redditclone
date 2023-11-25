@@ -3,18 +3,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:redditclone/core/common/loader.dart';
 import 'package:redditclone/core/common/sign_in_button.dart';
 import 'package:redditclone/core/constants/constants.dart';
+import 'package:redditclone/features/auth/controller/auth_controller.dart';
 
 class LoginScreen extends ConsumerWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   void signInAsGuest(WidgetRef ref, BuildContext context) {
-    // ref.read(authControllerProvider.notifier).signInAsGuest(context);
+    ref.read(authControllerProvider.notifier).signInAsGuest(context);
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final isLoading = ref.watch(authControllerProvider);
-    final isLoading = false;
+    final isLoading = ref.watch(authControllerProvider);
 
     return Scaffold(
       appBar: AppBar(

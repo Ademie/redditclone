@@ -11,6 +11,8 @@ import 'package:redditclone/core/providers/firebase_providers.dart';
 import 'package:redditclone/core/type_defs.dart';
 import 'package:redditclone/models/user_model.dart';
 
+
+
 final authRepositoryProvider = Provider(
   (ref) => AuthRepository(
     firestore: ref.read(firestoreProvider),
@@ -86,6 +88,7 @@ class AuthRepository {
         );
         await _users.doc(userCredential.user!.uid).set(userModel.toMap());
       } else {
+        // else get existing user
         userModel = await getUserData(userCredential.user!.uid).first;
       }
       return right(userModel);
@@ -120,6 +123,7 @@ class AuthRepository {
     }
   }
 
+  // Using a stream cos you have to persist the users data and see data in realtime
   Stream<UserModel> getUserData(String uid) {
     return _users.doc(uid).snapshots().map(
         (event) => UserModel.fromMap(event.data() as Map<String, dynamic>));
