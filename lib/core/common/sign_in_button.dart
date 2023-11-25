@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:redditclone/core/constants/constants.dart';
+import 'package:redditclone/features/auth/controller/auth_controller.dart';
 import 'package:redditclone/theme/pallete.dart';
 
 class SignInButton extends ConsumerWidget {
@@ -8,7 +9,7 @@ class SignInButton extends ConsumerWidget {
   const SignInButton({Key? key, this.isFromLogin = true}) : super(key: key);
 
   void signInWithGoogle(BuildContext context, WidgetRef ref) {
-    // ref.read(authControllerProvider.notifier).signInWithGoogle(context, isFromLogin);
+    ref.read(authControllerProvider.notifier).signInWithGoogle(context, isFromLogin);
   }
 
   @override

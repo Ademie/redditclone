@@ -56,6 +56,7 @@ class LoginScreen extends ConsumerWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
+                const SignInButton()
                 // const Responsive(child: SignInButton()),
               ],
             ),
